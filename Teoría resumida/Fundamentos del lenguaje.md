@@ -37,3 +37,10 @@ Una de estas en el área de código de un programa (en donde se encuentran las i
 
 Los operandos pueden ser registros, valores constantes, etiquetas, variables de memoria y cadenas de texto. Los registros son quizá los operandos más frecuentemente usados por las instrucciones.
 
+### Segmentos
+
+Se dividen en tres:
+
+* Código: contiene todas las instrucciones ejecutables de un programa.
+* Datos: almacena variables.
+* Pila: almacena los parámetros del procedimiento y las variables locales.
