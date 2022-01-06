@@ -44,3 +44,7 @@ Se dividen en tres:
 * Código: contiene todas las instrucciones ejecutables de un programa.
 * Datos: almacena variables.
 * Pila: almacena los parámetros del procedimiento y las variables locales.
+
+### Constantes simbólicas
+
+Se crea mediante un identificador con una expresión entera o con cierto texto. Los símbolos no reservan almacenamiento.
