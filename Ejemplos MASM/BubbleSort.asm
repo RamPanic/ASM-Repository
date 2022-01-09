@@ -16,13 +16,13 @@ includelib c:\masm32\lib\User32b.lib
 ;includelib \masm32\lib\masm32.lib
 
 ; 1) Para cada elemento en el array elementos con i = 0
-;		1.1) Para cada elemento del array elementos con j = i + 1
-; 			1.1.1) Elemento actual es más grande que el próximo?
-;				1.1.1.1) Se almacena el valor de la actual en una variable temporal
-;				1.1.1.2) Se intercambia el valor del elemento actual con el próximo
-;				1.1.1.3) Se intercambia el valor del elemento próximo con el de la variable temporal
-;			1.1.2) Se incrementa j del array
-;		1.2) Se incrementa i del array
+;	1.1) Para cada elemento del array elementos con j = i + 1
+; 		1.1.1) Elemento actual es más grande que el próximo?
+;			1.1.1.1) Se almacena el valor de la actual en una variable temporal
+;			1.1.1.2) Se intercambia el valor del elemento actual con el próximo
+;			1.1.1.3) Se intercambia el valor del elemento próximo con el de la variable temporal
+;		1.1.2) Se incrementa j del array
+;	1.2) Se incrementa i del array
 
 .data
 
@@ -30,16 +30,16 @@ includelib c:\masm32\lib\User32b.lib
 
 ; Ejemplo de ordenamiento
 
-;	0-1:   10, 40, 30, 20, 15, 0
-;   0-2:   10, 30, 40, 20, 15, 0
-;   0-3:   10, 30, 20, 40, 15, 0
-;   0-4:   10, 30, 20, 15, 40, 0
-;   0-5:   10, 30, 20, 15, 0, 40
+;   	0-1:   10, 40, 30, 20, 15, 0
+;   	0-2:   10, 30, 40, 20, 15, 0
+;   	0-3:   10, 30, 20, 40, 15, 0
+;   	0-4:   10, 30, 20, 15, 40, 0
+;   	0-5:   10, 30, 20, 15, 0, 40
 
-;   1-1:   10, 20, 30, 15, 0, 40
-;   1-2:   10, 20, 15, 30, 0, 40
-;   1-3:   10, 20, 15, 0, 30, 40
-;   1-4:   10, 20, 15, 0, 30, 40
+;   	1-1:   10, 20, 30, 15, 0, 40
+;   	1-2:   10, 20, 15, 30, 0, 40
+;   	1-3:   10, 20, 15, 0, 30, 40
+;   	1-4:   10, 20, 15, 0, 30, 40
 ;	...
 
 .code
@@ -49,33 +49,33 @@ includelib c:\masm32\lib\User32b.lib
 ; =============================================================
 
 		mov esi, offset elementos				; Asigna dirección de memoria a esi		
-		xor ecx, ecx 							; ecx = 0
+		xor ecx, ecx 						; ecx = 0
 
 		; ----------------------
 
 		l1:
 
 		cmp ecx, lengthof elementos	 			; if ecx < len(elementos)
-		jl l2									; Si es verdadero salta a l2
-		jmp done								; De lo contrario salta a done
+		jl l2							; Si es verdadero salta a l2
+		jmp done						; De lo contrario salta a done
 
 		; ----------------------
 
 		l2:
 
-		mov ebx, ecx 							; ebx = ecx
-		add ebx, 1 								; ebx = ebx + 1 
-		jmp l3									; Salta a l3
+		mov ebx, ecx 						; ebx = ecx
+		add ebx, 1 						; ebx = ebx + 1 
+		jmp l3							; Salta a l3
 
 		; ----------------------
 
 		l3:
 
-		cmp ebx, lengthof elementos  			; if ebx < len(elementos)
-		jl l4									; Si es verdadero salta a l4
+		cmp ebx, lengthof elementos  				; if ebx < len(elementos)
+		jl l4							; Si es verdadero salta a l4
 
-		inc ecx 								; ecx++
-		jmp l1
+		inc ecx 						; ecx++
+		jmp l1							; Salta a l1
 
 		; ----------------------
 
@@ -83,8 +83,8 @@ includelib c:\masm32\lib\User32b.lib
 
 		mov eax, [esi + ecx * 4]				; eax = elementos[ecx]
 		cmp eax, [esi + ebx * 4]				; if eax > elementos[ebx]
-		jg l5									; Si es verdadero salta a l5
-		jmp l6									; Salta a l6
+		jg l5							; Si es verdadero salta a l5
+		jmp l6							; Salta a l6
 
 		; ----------------------
 
@@ -97,11 +97,13 @@ includelib c:\masm32\lib\User32b.lib
 
 		l6:
 		
-		inc ebx									; ebx++
-		jmp l3 									; Salta a l3			
+		inc ebx							; ebx++
+		jmp l3 							; Salta a l3			
 
 		; ----------------------
-
+		
+		; Mostrar resultados finales
+		
 		done:
 
 		lea esi, elementos
